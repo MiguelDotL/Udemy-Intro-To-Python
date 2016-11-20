@@ -3,7 +3,7 @@
     <Document id="feat_1">
         <Placemark id="feat_2">
             <Point id="geom_0">
-                <coordinates>10.0,10.0,0.0</coordinates>
+                <coordinates>10.0,10,0.0</coordinates>
             </Point>
         </Placemark>
         <Placemark id="feat_3">
@@ -18,7 +18,7 @@
         </Placemark>
         <Placemark id="feat_5">
             <Point id="geom_3">
-                <coordinates>9.2,10.1,0.0</coordinates>
+                <coordinates>9.2,  ,0.0</coordinates>
             </Point>
         </Placemark>
     </Document>

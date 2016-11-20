@@ -12,6 +12,7 @@ def csvToKml(sourcepath,sourcename, filepath, filename):
         df  = pandas.read_csv("%(sourcepath)s/%(sourcename)s.csv" %locals())
 
     # parse .csv file columns with "Longitude" / "Latitude" titles
+    # zip cols together && make coord pairs
     for lon, lat in zip(df["Longitude"], df["Latitude"]):
         kml.newpoint(coords = [(lon,lat)])
 
