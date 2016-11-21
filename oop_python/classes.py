@@ -1,4 +1,4 @@
-class Employee:
+class Employee(object):
 
     raise_percent = 1.04
     employee_count = 0
@@ -32,6 +32,78 @@ class Employee:
         return False if day.weekday() >= 5 else True
 
 
+
+class Developer(Employee):
+
+    raise_percent = 1.10
+
+    def __init__(self, first_name, last_name, salary, prog_lang, company='company'):
+        super(Developer, self).__init__(first_name, last_name, salary, company)
+        self.prog_lang = prog_lang
+
+
+
+class Manager(Employee):
+
+    def __init__(self, first_name, last_name, salary, company='company', employees=None):
+        super(Manager,self).__init__(first_name, last_name, salary, company)
+        if employees is None:
+            self.employees = []
+        else:
+            self.employees = employees
+
+    def add_empl(self, empl):
+        if empl not in self.employees:
+            self.employees.append(empl)
+
+    def remove_empl(self, empl):
+        if empl in self.employees:
+            self.employees.remove(empl)
+
+    def print_empls(self):
+        for empl in self.employees:
+            print('-->', empl.full_name())
+
+
+
+
+
+dev_1 = Developer('Miguel', 'Lozano', 55000, 'Python', 'Wyncode')
+dev_2 = Developer('Teste','Man', 45000, 'Ruby')
+
+mgr_1 = Manager('Brad', 'Ley', 80000, 'BespokeInvest', [dev_1])
+
+print(mgr_1.email)
+mgr_1.print_empls()
+print('----------------')
+mgr_1.add_empl(dev_2)
+mgr_1.print_empls()
+print('----------------')
+mgr_1.remove_empl(dev_1)
+mgr_1.print_empls()
+
+
+# isinstance()
+print('Is mgr_1 a Manager')
+print(isinstance(mgr_1, Manager))
+print('Is mgr_1 an Employee')
+print(isinstance(mgr_1, Employee))
+print('Is mgr_1 a Developer')
+print(isinstance(mgr_1, Developer))
+
+
+# issubclass()
+print('Is a Manager an Employee')
+print(issubclass(Manager, Employee))
+print('Is a Developer an Employee')
+print(issubclass(Developer, Employee))
+print('Is a Manager a Developer')
+print(issubclass(Manager, Developer))
+
+
+# print(help(Developer))
+print(dev_1.email)
+print(dev_1.prog_lang)
 
 joe = Employee("Joe", "Schmoe", 55000, "compuserve")
 bill = Employee("Bill", "Lumburgh", 155000, "inatek")
